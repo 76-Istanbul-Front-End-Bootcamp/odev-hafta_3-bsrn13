@@ -9,7 +9,8 @@ class Animal {
 
   }
   
-action() {
+action(e) {
+  e.stopPropagation();
   document.getElementById(this.actionSoundName).play();
 
 }
@@ -18,9 +19,9 @@ putInTheDocument () {
   var petsTable = document.getElementById("petsTable");
   var petTR = document.createElement("tr");
 
-  var petNameTD = document.createElement("td");
-  petNameTD.textContent = this.name;
-  petTR.appendChild(petNameTD);
+  var petNameTR = document.createElement("td");
+  petNameTR.textContent = this.name;
+  petTR.appendChild(petNameTR);
 
   var petLegsTD = document.createElement("td");
   petLegsTD.textContent = this.legs;
@@ -33,7 +34,7 @@ putInTheDocument () {
   petTR.appendChild(petActionTD);
 
   petActionTDButton.onclick = this.action.bind(this);
-  petNameTD.onclick = this.getImage.bind(this);
+  petNameTR.onclick = this.getImage.bind(this);
   petsTable.querySelector("tbody").appendChild(petTR)
 }
 
@@ -54,7 +55,6 @@ class Cat extends Animal {
     }
   
 
-Cat.prototype = Animal.prototype;
 
 class Monkey extends Animal {
   constructor (name) {
@@ -67,7 +67,7 @@ class Monkey extends Animal {
     }
 
 
-Monkey.prototype = Animal.prototype;
+
 
 var Mila = new Cat("Mila");
 Mila.putInTheDocument();
