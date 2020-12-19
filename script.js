@@ -19,9 +19,9 @@ putInTheDocument () {
   var petsTable = document.getElementById("petsTable");
   var petTR = document.createElement("tr");
 
-  var petNameTR = document.createElement("td");
-  petNameTR.textContent = this.name;
-  petTR.appendChild(petNameTR);
+  var petNameTD = document.createElement("td");
+  petNameTD.textContent = this.name;
+  petTR.appendChild(petNameTD);
 
   var petLegsTD = document.createElement("td");
   petLegsTD.textContent = this.legs;
@@ -34,7 +34,7 @@ putInTheDocument () {
   petTR.appendChild(petActionTD);
 
   petActionTDButton.onclick = this.action.bind(this);
-  petNameTR.onclick = this.getImage.bind(this);
+  petTR.onclick = this.getImage.bind(this);
   petsTable.querySelector("tbody").appendChild(petTR)
 }
 
